@@ -1,0 +1,93 @@
+@import "../../../styles.css";
+
+:host ::ng-deep p-message .p-inline-message .p-inline-message-text {
+	font-size: 12px;
+}
+
+.default {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+
+p-table {
+	line-height: 1.5;
+}
+
+p-table td {
+	font-size: 13px;
+}
+
+.name {
+	font-weight: 600;	
+}
+
+.map {
+	font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    color: #2152b3;
+}
+
+.Paid {
+	color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    background-color: #2152b3;
+    border-radius: 20px;
+    padding: 2px 5px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-left: 5px;
+}
+
+.capacity {
+	text-decoration: none;
+    color: #2e2e2e;
+    font-size: 12px;
+    font-weight: 700;
+    background-color: #a9d18e;
+    padding: 0 10px;
+    line-height: 20px;
+    margin-top: 5px;
+    border-radius: 50px;
+    align-content: center;
+    justify-content: center;
+    height: 20px;
+    margin-left: 5px;
+}
+
+.age {
+	color: #c20505;
+    font-size: 12px;
+    text-transform: capitalize;
+    font-weight: 600;
+	margin-left: 5px;
+}
+
+.date {
+	color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: #2196F3;
+    border-radius: 5px;
+    padding: 3px 0;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 8px 0;
+}
+
+.vaccine-details {
+	padding: 0 5px;
+}
+
+.vaccine-details button {
+	font-size: 10px;
+	margin-left: 10px;
+	padding: 5px;
+}
+.vaccine-details a {
+	text-decoration: none;
+}

@@ -1,0 +1,8 @@
+<div style="text-align: center;">
+	<p-inputNumber [(ngModel)]="pincode" mode="decimal" placeholder="Enter your pincode" maxlength="6" required="true"
+		[useGrouping]="false" (onBlur)="convertInput()">
+	</p-inputNumber>
+</div>
+<div style="text-align: center; margin-top: 10px;">
+	<button pButton type="button" label="Search" icon="pi pi-search" class="p-button-sm" (click)="search()"></button>
+</div>

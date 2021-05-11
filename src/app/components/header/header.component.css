@@ -1,0 +1,9 @@
+@import "../../../styles.css";
+
+h1 {
+	width: 100%;
+	text-align: center;
+	font-size: 24px;
+	color: #008000ad;
+	padding: 20px 0;
+}

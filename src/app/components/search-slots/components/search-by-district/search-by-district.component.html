@@ -1,0 +1,37 @@
+<div style="text-align: center;">
+	<p-dropdown #dd1 [options]="states" [(ngModel)]="selectedState" optionLabel="name" [filter]="true" filterBy="name"
+		[showClear]="true" required="true" resetFilterOnHide="true" placeholder="Select State"
+		[style]="{'text-align': 'left'}" (onChange)="showDistricts()">
+		<ng-template pTemplate="selectedItem">
+			<div class="state-item state-item-value" *ngIf="selectedState">
+				<div>{{selectedState.name}}</div>
+			</div>
+		</ng-template>
+		<ng-template let-state pTemplate="item">
+			<div class="state-item">
+				<div>{{state.name}}</div>
+			</div>
+		</ng-template>
+	</p-dropdown>
+</div>
+
+<div style="text-align: center; margin-top: 10px;" *ngIf="selectedState">
+	<p-dropdown #dd2 [options]="districts" [(ngModel)]="selectedDistrict" optionLabel="name" [filter]="true"
+		filterBy="name" [showClear]="true" required="true" resetFilterOnHide="true" placeholder="Select District"
+		[style]="{'text-align': 'left'}">
+		<ng-template pTemplate="selectedItem">
+			<div class="district-item district-item-value" *ngIf="selectedState && selectedDistrict">
+				<div>{{selectedDistrict.name}}</div>
+			</div>
+		</ng-template>
+		<ng-template let-district pTemplate="item">
+			<div class="district-item">
+				<div>{{district.name}}</div>
+			</div>
+		</ng-template>
+	</p-dropdown>
+</div>
+
+<div style="text-align: center; margin-top: 10px;">
+	<button pButton type="button" label="Search" icon="pi pi-search" class="p-button-sm" (click)="search()"></button>
+</div>

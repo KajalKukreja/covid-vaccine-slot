@@ -1,0 +1,5 @@
+@import "../../../../../styles.css";
+
+:host ::ng-deep .p-dropdown {
+    width: 19rem;
+}

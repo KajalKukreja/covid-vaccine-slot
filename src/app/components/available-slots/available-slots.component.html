@@ -1,0 +1,51 @@
+<div *ngIf="slots == null || slots.length == 0">
+	<div class="default">
+		<span *ngIf="noResults">
+			<h3>There is no slot available for next 7 days</h3>
+		</span>
+		<span *ngIf="!noResults">
+			<h3>Please select Pincode or District to check slot availability</h3>
+		</span>
+	</div>
+</div>
+
+<p-table *ngIf="slots != null && slots.length > 0" [value]="slots" [paginator]="true" [rows]="10">
+	<!-- <ng-template pTemplate="caption">Users List</ng-template> -->
+	<ng-template pTemplate="header">
+		<tr>
+			<th *ngFor="let col of cols">
+				{{col.header}}
+			</th>
+		</tr>
+	</ng-template>
+	<ng-template pTemplate="body" let-slot>
+		<tr>
+			<td>
+				<p class="name">{{slot.name}}
+					<span *ngIf="slot.fee_type == 'Paid'"><span
+							[ngClass]="slot.fee_type">{{slot.fee_type}}</span></span>
+				</p>
+				{{slot.address}}
+				<p>
+					<a href="https://maps.google.com/?saddr=&daddr={{slot.name}},{{slot.address}}" target="_blank"
+						class="map">Get Map Directions</a>
+				</p>
+				<div *ngFor="let v of slot.vaccine_fees" class="fees">
+					<p-message severity="info" text="{{v.vaccine}} : Rs. {{v.fee}}" styleClass="p-mr-2"></p-message>
+				</div>
+			</td>
+			<td>
+				<div *ngFor="let v of slot.vaccines">
+					<p class="date">{{v.date}}</p>
+					<div class="vaccine-details">
+						{{v.vaccine}}<span class="capacity">{{v.available_capacity}}</span>
+						<span class="age">Age {{v.min_age_limit}}+</span>
+						<a href="https://www.cowin.gov.in/home" target="_blank"><button pButton type="button"
+								label="Book Slot" class="p-button-help p-button-raised p-button-rounded"></button></a>
+						<p>{{v.slots}}</p>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</ng-template>
+</p-table>
