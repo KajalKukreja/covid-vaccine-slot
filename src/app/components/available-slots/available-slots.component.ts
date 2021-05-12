@@ -15,7 +15,7 @@ export class AvailableSlotsComponent implements OnInit {
 
 	pincode: number;
 
-	district_id: number;
+	districtId: number;
 
 	cols: any[];
 
@@ -29,7 +29,7 @@ export class AvailableSlotsComponent implements OnInit {
 
 		this.route.params.subscribe(val => {
 			this.pincode = val.pincode != null ? +val.pincode : null;
-			this.district_id = val.district_id != null ? +val.district_id : null;
+			this.districtId = val.district_id != null ? +val.district_id : null;
 
 			this.cols = [
 				{ field: 'center', header: 'Center' },
@@ -47,8 +47,8 @@ export class AvailableSlotsComponent implements OnInit {
 		if (this.pincode != null && this.pincode != undefined && this.pincode != 0) {
 			result = this.vaccineSlotsService.getSlotsByPincode(this.pincode);
 		}
-		else if (this.district_id != null && this.district_id != undefined && this.district_id != 0) {
-			result = this.vaccineSlotsService.getSlotsByDistrict(this.district_id);
+		else if (this.districtId != null && this.districtId != undefined && this.districtId != 0) {
+			result = this.vaccineSlotsService.getSlotsByDistrict(this.districtId);
 		}
 		if (result != null && result != undefined) {
 			result.subscribe((rowData: any) => {

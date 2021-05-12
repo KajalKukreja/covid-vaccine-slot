@@ -14,21 +14,37 @@
 
 	<p-dialog [(visible)]="displayEmail" [breakpoints]="{'960px': '75vw', '640px': '100vw'}"
 		[style]="{'text-align': 'center'}" [modal]="true">
-		<h4>Get Email Notification when slot is available</h4>
-		<input type="email" pInputText [(ngModel)]="email" placeHolder="Enter your email address" />
-		<div style="margin-top: 15px;">
-			<button pButton type="button" label="Notify Me" class="p-button-sm" (click)="notifyMe()"></button>
-		</div>
+		<span *ngIf="emailAdded == 'false'">
+			<h4 style="color: red;">There's some error. Please try again</h4>
+		</span>
+		<span *ngIf="emailAdded == undefined || emailAdded == null || emailAdded == '' || emailAdded == 'false'">
+			<h4>Get Email Notification when slot is available</h4>
+			<input type="text" pInputText [(ngModel)]="email" placeHolder="Enter your email address" />
+			<div style="margin-top: 15px;">
+				<button pButton type="button" label="Notify Me" class="p-button-sm" (click)="notifyMe()"></button>
+			</div>
+		</span>
+		<span *ngIf="emailAdded == 'true'">
+			<h4>Great! You'll get an Email Notification when slot is available</h4>
+		</span>
 	</p-dialog>
 
 	<p-dialog [(visible)]="displayWhatsApp" [breakpoints]="{'960px': '75vw', '640px': '100vw'}"
 		[style]="{'text-align': 'center'}" [modal]="true">
-		<h4>Get WhatsApp Notification when slot is available</h4>
-		<input type="number" max-length="10" pInputText [(ngModel)]="mobileNo"
-			placeHolder="Enter your registered mobile number" />
-		<div style="margin-top: 15px;">
-			<button pButton type="button" label="Notify Me" class="p-button-sm" (click)="notifyMe()"></button>
-		</div>
+		<span *ngIf="mobileNoAdded == 'false'">
+			<h4 style="color: red;">There's some error. Please try again</h4>
+		</span>
+		<span *ngIf="mobileNoAdded == undefined || mobileNoAdded == null || mobileNoAdded == '' || mobileNoAdded == 'false'">
+			<h4>Get WhatsApp Notification when slot is available</h4>
+			<input type="text" maxlength="10" pInputText [(ngModel)]="mobileNo"
+				placeHolder="Enter your whatsapp mobile number" />
+			<div style="margin-top: 15px;">
+				<button pButton type="button" label="Notify Me" class="p-button-sm" (click)="notifyMe()"></button>
+			</div>
+		</span>
+		<span *ngIf="mobileNoAdded == 'true'">
+			<h4>Great! You'll get a WhatsApp Notification when slot is available</h4>
+		</span>
 	</p-dialog>
 </div>
 

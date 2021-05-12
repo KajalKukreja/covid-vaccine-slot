@@ -18,8 +18,8 @@ export class VaccineSlotsService {
     return this.http.get(url);
   }
 
-  getSlotsByDistrict(district_id: number): Observable<any> {
-    const url = environment.cowinEndpoint + 'appointment/sessions/public/calendarByDistrict?district_id=' + district_id + '&date=' + this.date;
+  getSlotsByDistrict(districtId: number): Observable<any> {
+    const url = environment.cowinEndpoint + 'appointment/sessions/public/calendarByDistrict?district_id=' + districtId + '&date=' + this.date;
     return this.http.get(url);
   }
 }

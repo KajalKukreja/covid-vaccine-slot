@@ -8,8 +8,8 @@ export class DistrictsService {
 
   constructor(private http: HttpClient) { }
 
-  getDistricts(state_id: number): Observable<any> {
-    const url = environment.cowinEndpoint + 'admin/location/districts/' + state_id;
+  getDistricts(stateId: number): Observable<any> {
+    const url = environment.cowinEndpoint + 'admin/location/districts/' + stateId;
     return this.http.get(url);
   }
 }
