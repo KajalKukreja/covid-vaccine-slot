@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -8,12 +8,14 @@ export class MemberService {
 
   constructor(private http: HttpClient) { }
 
-  addEmailAddress(email: string): Observable<any> {
-    return this.http.post(environment.restApiEndpoint + 'email', email);
-  }
+  addMember(email: string, mobileNo: number, pincode: number, districtId: number): Observable<any> {
+    let params = new HttpParams();
+    params = params.set('email', email);
+    params = params.set('mobile_no', mobileNo != null ? mobileNo.toString() : '');
+    params = params.set('pincode', pincode != null ? pincode.toString() : '');
+    params = params.set('district_id', districtId != null ? districtId.toString() : '');
 
-  addMobileNumber(mobileNo: number): Observable<any> {
-    return this.http.post(environment.restApiEndpoint + 'mobileno', mobileNo);
+    return this.http.post(environment.restApiEndpoint, '', { params: params });
   }
 
 }

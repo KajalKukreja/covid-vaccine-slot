@@ -1,4 +1,4 @@
-<div style="text-align: center;">
+<div class="input_state">
 	<p-dropdown #dd1 [options]="states" [(ngModel)]="selectedState" optionLabel="name" [filter]="true" filterBy="name"
 		[showClear]="true" required="true" resetFilterOnHide="true" placeholder="Select State"
 		[style]="{'text-align': 'left'}" (onChange)="showDistricts()">
@@ -15,7 +15,7 @@
 	</p-dropdown>
 </div>
 
-<div style="text-align: center; margin-top: 10px;" *ngIf="selectedState">
+<div style="margin-top: 10px;" *ngIf="selectedState" class="input_district">
 	<p-dropdown #dd2 [options]="districts" [(ngModel)]="selectedDistrict" optionLabel="name" [filter]="true"
 		filterBy="name" [showClear]="true" required="true" resetFilterOnHide="true" placeholder="Select District"
 		[style]="{'text-align': 'left'}">

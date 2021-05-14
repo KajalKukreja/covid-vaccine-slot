@@ -8,45 +8,7 @@
 				<app-search-by-district></app-search-by-district>
 			</p-tabPanel>
 		</p-tabView>
-	
-		<h3>Slot unavailable?</h3>
-		<h4>Register now and get notified on <a style="color: #2196F3" (click)="showEmailDialog()">Email</a> or <a
-				style="color: #2196F3" (click)="showWhatsAppDialog()">WhatsApp</a> when slot is available !</h4>
-	
-		<p-dialog [(visible)]="displayEmail" [breakpoints]="{'960px': '75vw', '640px': '100vw'}"
-			[style]="{'text-align': 'center'}" [modal]="true">
-			<span *ngIf="emailAdded == 'false'">
-				<h4 style="color: red;">There's some error. Please try again</h4>
-			</span>
-			<span *ngIf="emailAdded == undefined || emailAdded == null || emailAdded == '' || emailAdded == 'false'">
-				<h4>Get Email Notification when slot is available</h4>
-				<input type="text" pInputText [(ngModel)]="email" placeHolder="Enter your email address" />
-				<div style="margin-top: 15px;">
-					<button pButton type="button" label="Notify Me" class="p-button-sm" (click)="notifyMe()"></button>
-				</div>
-			</span>
-			<span *ngIf="emailAdded == 'true'">
-				<h4>Great! You'll get an Email Notification when slot is available</h4>
-			</span>
-		</p-dialog>
-	
-		<p-dialog [(visible)]="displayWhatsApp" [breakpoints]="{'960px': '75vw', '640px': '100vw'}"
-			[style]="{'text-align': 'center'}" [modal]="true">
-			<span *ngIf="mobileNoAdded == 'false'">
-				<h4 style="color: red;">There's some error. Please try again</h4>
-			</span>
-			<span *ngIf="mobileNoAdded == undefined || mobileNoAdded == null || mobileNoAdded == '' || mobileNoAdded == 'false'">
-				<h4>Get WhatsApp Notification when slot is available</h4>
-				<input type="text" maxlength="10" pInputText [(ngModel)]="mobileNo"
-					placeHolder="Enter your whatsapp mobile number" />
-				<div style="margin-top: 15px;">
-					<button pButton type="button" label="Notify Me" class="p-button-sm" (click)="notifyMe()"></button>
-				</div>
-			</span>
-			<span *ngIf="mobileNoAdded == 'true'">
-				<h4>Great! You'll get a WhatsApp Notification when slot is available</h4>
-			</span>
-		</p-dialog>
+		<app-slot-notification></app-slot-notification>
 	</div>
 	
 	<div class="content">

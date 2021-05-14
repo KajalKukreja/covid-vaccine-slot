@@ -23,6 +23,7 @@ import { SearchSlotsComponent } from './components/search-slots/search-slots.com
 import { SearchByDistrict } from './components/search-slots/components/search-by-district/search-by-district.component';
 import { SearchByPincode } from './components/search-slots/components/search-by-pincode/search-by-pincode.component';
 import { AvailableSlotsComponent } from './components/available-slots/available-slots.component';
+import { SlotNotification } from './components/search-slots/components/slot-notification/slot-notification.component';
 
 const appRoutes: Routes = [
   {
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
     SearchSlotsComponent,
     SearchByDistrict,
     SearchByPincode,
+    SlotNotification,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

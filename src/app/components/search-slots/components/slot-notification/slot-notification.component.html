@@ -1,0 +1,126 @@
+<div class="slot-notiication">
+	<h3>Slot unavailable?</h3>
+	<h4>Get notified on <a style="color: #2196F3" (click)="showEmailDialog()">Email</a> or <a
+			style="color: #2196F3" (click)="showWhatsAppDialog()">WhatsApp</a> when slot is available !</h4>
+
+	<p-dialog [(visible)]="displayEmail" [breakpoints]="{'960px': '80vw', '640px': '100vw'}"
+	[style]="{'text-align': 'center', 'height': '80vh'}" [modal]="true">
+		<span *ngIf="emailAdded == 'false'">
+			<h4 style="color: red;">There's some error. Please try again</h4>
+		</span>
+		<span *ngIf="emailAdded == undefined || emailAdded == null || emailAdded == '' || emailAdded == 'false'">
+			<h4>Get Email Notification when slot is available.<br />You can get notification for Pincode / District / Both </h4>
+
+			<div class="input_pincode">
+				<p-inputNumber [(ngModel)]="pincode" mode="decimal" placeholder="Enter your pincode" maxlength="6"
+					required="true" [useGrouping]="false" (onBlur)="convertInput()">
+				</p-inputNumber>
+			</div>
+
+			<div class="input_state" style="margin-top: 10px;">
+				<p-dropdown #dd1 [options]="states" [(ngModel)]="selectedState" optionLabel="name" [filter]="true"
+					filterBy="name" [showClear]="true" required="true" resetFilterOnHide="true"
+					placeholder="Select State" [style]="{'text-align': 'left'}" (onChange)="showDistricts()">
+					<ng-template pTemplate="selectedItem">
+						<div class="state-item state-item-value" *ngIf="selectedState">
+							<div>{{selectedState.name}}</div>
+						</div>
+					</ng-template>
+					<ng-template let-state pTemplate="item">
+						<div class="state-item">
+							<div>{{state.name}}</div>
+						</div>
+					</ng-template>
+				</p-dropdown>
+			</div>
+
+			<div style="margin-top: 10px;" *ngIf="selectedState" class="input_district">
+				<p-dropdown #dd2 [options]="districts" [(ngModel)]="selectedDistrict" optionLabel="name" [filter]="true"
+					filterBy="name" [showClear]="true" required="true" resetFilterOnHide="true"
+					placeholder="Select District" [style]="{'text-align': 'left'}">
+					<ng-template pTemplate="selectedItem">
+						<div class="district-item district-item-value" *ngIf="selectedState && selectedDistrict">
+							<div>{{selectedDistrict.name}}</div>
+						</div>
+					</ng-template>
+					<ng-template let-district pTemplate="item">
+						<div class="district-item">
+							<div>{{district.name}}</div>
+						</div>
+					</ng-template>
+				</p-dropdown>
+			</div>
+
+			<input type="text" pInputText [(ngModel)]="email" placeHolder="Enter your email address"
+				style="margin-top: 10px;" />
+
+			<div style="margin-top: 15px;">
+				<button pButton type="button" label="Notify Me" class="p-button-sm" (click)="notifyMe()"></button>
+			</div>
+		</span>
+		<div *ngIf="emailAdded == 'true'" style="height: 100%; display: flex; align-items: center;">
+			<h4>Great! You'll get an Email Notification when slot is available</h4>
+		</div>
+	</p-dialog>
+
+	<p-dialog [(visible)]="displayWhatsApp" [breakpoints]="{'960px': '80vw', '640px': '100vw'}"
+	[style]="{'text-align': 'center', 'height': '80vh'}" [modal]="true">
+		<span *ngIf="mobileNoAdded == 'false'">
+			<h4 style="color: red;">There's some error. Please try again</h4>
+		</span>
+		<span
+			*ngIf="mobileNoAdded == undefined || mobileNoAdded == null || mobileNoAdded == '' || mobileNoAdded == 'false'">
+			<h4>Get WhatsApp Notification when slot is available.<br />You can get notification for Pincode / District / Both </h4>
+
+			<div class="input_pincode">
+				<p-inputNumber [(ngModel)]="pincode" mode="decimal" placeholder="Enter your pincode" maxlength="6"
+					required="true" [useGrouping]="false" (onBlur)="convertInput()">
+				</p-inputNumber>
+			</div>
+
+			<div class="input_state" style="margin-top: 10px;">
+				<p-dropdown #dd1 [options]="states" [(ngModel)]="selectedState" optionLabel="name" [filter]="true"
+					filterBy="name" [showClear]="true" required="true" resetFilterOnHide="true"
+					placeholder="Select State" [style]="{'text-align': 'left'}" (onChange)="showDistricts()">
+					<ng-template pTemplate="selectedItem">
+						<div class="state-item state-item-value" *ngIf="selectedState">
+							<div>{{selectedState.name}}</div>
+						</div>
+					</ng-template>
+					<ng-template let-state pTemplate="item">
+						<div class="state-item">
+							<div>{{state.name}}</div>
+						</div>
+					</ng-template>
+				</p-dropdown>
+			</div>
+
+			<div style="margin-top: 10px;" *ngIf="selectedState" class="input_district">
+				<p-dropdown #dd2 [options]="districts" [(ngModel)]="selectedDistrict" optionLabel="name" [filter]="true"
+					filterBy="name" [showClear]="true" required="true" resetFilterOnHide="true"
+					placeholder="Select District" [style]="{'text-align': 'left'}">
+					<ng-template pTemplate="selectedItem">
+						<div class="district-item district-item-value" *ngIf="selectedState && selectedDistrict">
+							<div>{{selectedDistrict.name}}</div>
+						</div>
+					</ng-template>
+					<ng-template let-district pTemplate="item">
+						<div class="district-item">
+							<div>{{district.name}}</div>
+						</div>
+					</ng-template>
+				</p-dropdown>
+			</div>
+
+			<input type="text" maxlength="10" pInputText [(ngModel)]="mobileNo"
+				placeHolder="Enter your whatsapp mobile number" style="margin-top: 10px;" />
+
+			<div style="margin-top: 15px;">
+				<button pButton type="button" label="Notify Me" class="p-button-sm" (click)="notifyMe()"></button>
+			</div>
+		</span>
+		<span *ngIf="mobileNoAdded == 'true'" style="height: 100%; display: flex; align-items: center;">
+			<h4>Great! You'll get a WhatsApp Notification when slot is available</h4>
+		</span>
+	</p-dialog>
+</div>
