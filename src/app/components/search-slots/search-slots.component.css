@@ -1,16 +1,29 @@
 @import "../../../styles.css";
 
+.slot-container {
+	width: 100%;
+	height: 87%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
 .menu {
-	width: 30%;
-	height: inherit;
-	float: left;
-	border-right: 5px solid #008000ad;
+	width: min-content;
+	display: flex;
+	flex: 0 1;
+	flex-direction: column;
 }
 
 .content {
-	width: 70%;
-	height: inherit;
-	float: left;
+	width: 100%;
+	display: flex;
+	flex: 1 1;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+	border-left: 2px double #008000ad;
 }
 
 h3 {
@@ -32,4 +45,24 @@ a {
 
 input {
     width: 19rem;
+}
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+	.menu {
+		width: 100%;
+		flex: 1 1;
+	}
+
+	.content {
+		border: 0;
+	}
+	
+	h3 {
+		margin: 0;
+	}
+
+	h4 {
+		margin: 10px 0 25px 0;
+	}
 }

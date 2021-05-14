@@ -54,7 +54,7 @@ export class AvailableSlotsComponent implements OnInit {
 			result.subscribe((rowData: any) => {
 				if (rowData.centers != null && rowData.centers.length > 0) {
 					for (let row of rowData.centers) {
-						const address = row.address + (row.block_name != 'Not Applicable' ? row.block_name + ',' : '') + ', ' + row.district_name + ', ' + row.state_name +
+						const address = row.address + ', ' + (row.block_name != 'Not Applicable' ? row.block_name + ', ' : '') + row.district_name + ', ' + row.state_name +
 							', ' + row.pincode;
 
 						let vaccines: VaccineDetails[] = [];

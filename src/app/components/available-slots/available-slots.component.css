@@ -91,3 +91,20 @@ p-table td {
 .vaccine-details a {
 	text-decoration: none;
 }
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .vaccine-details {
+        text-align: center;
+    }
+
+    .vaccine-details a::before {
+        content: "\A";
+        white-space: pre;
+    }
+    .vaccine-details a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+    }
+}

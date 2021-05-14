@@ -13,14 +13,16 @@
 	<!-- <ng-template pTemplate="caption">Users List</ng-template> -->
 	<ng-template pTemplate="header">
 		<tr>
-			<th *ngFor="let col of cols">
+			<!-- <th *ngFor="let col of cols">
 				{{col.header}}
-			</th>
+			</th> -->
+			<th style="width: 40%">Center</th>
+			<th style="width: 80%">Available Slot</th>
 		</tr>
 	</ng-template>
 	<ng-template pTemplate="body" let-slot>
 		<tr>
-			<td>
+			<td style="width: 20%; padding: 10px;">
 				<p class="name">{{slot.name}}
 					<span *ngIf="slot.fee_type == 'Paid'"><span
 							[ngClass]="slot.fee_type">{{slot.fee_type}}</span></span>
