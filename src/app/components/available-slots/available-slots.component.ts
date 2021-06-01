@@ -9,7 +9,6 @@ import { VaccineSlotsService } from 'src/app/services/vaccine-slots.service';
 	selector: 'app-available-slots',
 	templateUrl: './available-slots.component.html',
 	styleUrls: ['./available-slots.component.css'],
-	providers: [VaccineSlotsService]
 })
 export class AvailableSlotsComponent implements OnInit {
 
@@ -23,10 +22,9 @@ export class AvailableSlotsComponent implements OnInit {
 
 	noResults: boolean;
 
-	constructor(private router: Router, private route: ActivatedRoute, private vaccineSlotsService: VaccineSlotsService) { }
+	constructor(private route: ActivatedRoute, private vaccineSlotsService: VaccineSlotsService) { }
 
 	ngOnInit() {
-
 		this.route.params.subscribe(val => {
 			this.pincode = val.pincode != null ? +val.pincode : null;
 			this.districtId = val.district_id != null ? +val.district_id : null;
@@ -60,18 +58,20 @@ export class AvailableSlotsComponent implements OnInit {
 						let vaccines: VaccineDetails[] = [];
 						for (let session of row.sessions) {
 							if (session.available_capacity > 0) {
-								vaccines.push(new VaccineDetails(session.vaccine, session.date, session.available_capacity, session.min_age_limit, session.slots));
+								const slots = session.slots != null ? session.slots.toString().replaceAll(',', ', ') : '';
+								vaccines.push(new VaccineDetails(session.vaccine, session.date, session.available_capacity, session.available_capacity_dose1, session.available_capacity_dose2, session.min_age_limit, slots));
 							}
 						}
 						const vaccineSlot = new VaccineSlot(row.name, address,
 							row.fee_type, row.vaccine_fees, vaccines);
+
 						if (vaccineSlot.vaccines.length > 0) {
 							this.slots.push(vaccineSlot);
 						}
-						else {
-							console.log('No results');
-							this.noResults = true;
-						}
+					}
+					if (this.slots.length == 0) {
+						console.log('No results');
+						this.noResults = true;
 					}
 				}
 				else {

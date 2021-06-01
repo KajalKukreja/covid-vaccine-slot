@@ -1,8 +1,9 @@
 <div class="input_pincode">
-	<p-inputNumber [(ngModel)]="pincode" mode="decimal" placeholder="Enter your pincode" maxlength="6" required="true"
-		[useGrouping]="false" (onBlur)="convertInput()">
+	<p-inputNumber [(ngModel)]="pincode" mode="decimal" placeholder="Enter your pincode" maxlength="6" 
+		required="true" [useGrouping]="false" (onBlur)="validatePincode()">
 	</p-inputNumber>
+	<p *ngIf="pincodeError" class="error">* Valid pincode is required</p>
 </div>
 <div style="text-align: center; margin-top: 10px;">
-	<button pButton type="button" label="Search" icon="pi pi-search" class="p-button-sm" (click)="search()"></button>
+	<button pButton type="button" label="Search" class="p-button-sm" (click)="search()"></button>
 </div>

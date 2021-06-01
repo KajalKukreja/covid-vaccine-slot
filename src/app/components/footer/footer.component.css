@@ -1,0 +1,28 @@
+@import "../../../styles.css";
+
+.footer {
+	width: 100%;
+    bottom: 0;
+    position: fixed;
+    display: flex;
+    padding: 5px;
+    height: 6%;
+    justify-content: center;
+    align-items: center;
+	text-align: center;
+    border-top: 2px double #43a743e6;
+}
+
+h5 {
+	font-size: smaller;
+	color: #43a743e6;
+	margin: 5px;
+}
+
+h5 a {
+	color: #2196F3;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+	
+}

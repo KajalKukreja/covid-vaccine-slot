@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SearchByDistrict } from './components/search-by-district/search-by-district.component';
+import { SearchByPincode } from './components/search-by-pincode/search-by-pincode.component';
 
 @Component({
   selector: 'app-search-slots',
@@ -6,7 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-slots.component.css'],
 })
 export class SearchSlotsComponent implements OnInit {
-  constructor() { }
+  @ViewChild('pincode') pincode: SearchByPincode;
 
-  ngOnInit() { }
+  @ViewChild('district') district: SearchByDistrict;
+
+  constructor(private router: Router, private route: ActivatedRoute) { }
+
+	ngOnInit() { }
+
+  clear(event: any) {
+    if (event.index == 0) {
+      this.district.clearAll();
+    }
+    else if (event.index == 1) {
+      this.pincode.clearAll();
+    }
+  }
 }

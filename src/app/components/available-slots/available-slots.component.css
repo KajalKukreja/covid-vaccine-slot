@@ -1,16 +1,25 @@
 @import "../../../styles.css";
 
 :host ::ng-deep p-message .p-inline-message .p-inline-message-text {
-	font-size: 12px;
+	font-size: small;
+    padding: 2px;
+}
+
+.available-slots {
+    height: 100%;
 }
 
 .default {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 200px;
+    color: #495057;
+    font-size: large;
+    font-weight: 600;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    text-align: center;
 }
-
 
 p-table {
 	line-height: 1.5;
@@ -21,7 +30,8 @@ p-table td {
 }
 
 .name {
-	font-weight: 600;	
+	font-weight: 600;
+    overflow-wrap: break-word;
 }
 
 .map {
@@ -29,6 +39,10 @@ p-table td {
     font-weight: 600;
     text-align: center;
     color: #2152b3;
+}
+
+.fees {
+    margin-bottom: 10px;
 }
 
 .Paid {
@@ -43,7 +57,7 @@ p-table td {
     margin-left: 5px;
 }
 
-.capacity {
+.capacity, .nocapacity {
 	text-decoration: none;
     color: #2e2e2e;
     font-size: 12px;
@@ -57,6 +71,10 @@ p-table td {
     justify-content: center;
     height: 20px;
     margin-left: 5px;
+}
+
+.nocapacity {
+    background-color: #ff00009e;
 }
 
 .age {
@@ -92,19 +110,47 @@ p-table td {
 	text-decoration: none;
 }
 
+.doses {
+    margin: 0 10px;
+    padding: 0 10px;
+    border-left: 2px solid green;
+}
+
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .available-slots {
+        height: fit-content;
+    }
+
     .vaccine-details {
         text-align: center;
+    }
+    
+    .age::after {
+        content: "\A";
+        white-space: pre;
+    }
+
+    .doses {
+        border: none;
+    }
+
+    .doses::before {
+        content: "\A";
+        white-space: pre;
     }
 
     .vaccine-details a::before {
         content: "\A";
         white-space: pre;
     }
+
     .vaccine-details a {
         display: flex;
-        align-items: center;
-        justify-content: center;
         margin-top: 10px;
+        justify-content: center;
+    }
+
+    .vaccine-details button {
+        margin-left: 0;
     }
 }

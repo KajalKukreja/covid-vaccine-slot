@@ -1,30 +1,48 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
+import { UtilService } from 'src/app/services/util.service';
 
 @Component({
   selector: 'app-search-by-pincode',
   templateUrl: './search-by-pincode.component.html',
-  styleUrls: ['./search-by-pincode.component.css']
+  styleUrls: ['./search-by-pincode.component.css'],
 })
 export class SearchByPincode implements OnInit {
   pincode: number;
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  pincodeError: boolean;
+
+  constructor(private router: Router, private renderer: Renderer2, private utilService: UtilService) { }
 
   ngOnInit() { }
 
-  convertInput() {
-    if (this.pincode != null && this.pincode != undefined) {
-      this.pincode = Math.abs(this.pincode);
+  validatePincode() {
+    const validPincode = this.utilService.validPincode(this.pincode);
+		if (validPincode) {
+      this.pincodeError = false;
+      this.utilService.resetInput(0);
+    }
+    else {
+      this.pincodeError = true;
+      this.utilService.highlightInput(0);
     }
   }
 
   search() {
-    if (this.pincode != null && this.pincode != undefined) {
+    if (this.utilService.validPincode(this.pincode)) {
+      this.pincodeError = false;
+      this.utilService.resetInput(0);
       this.router.navigate(['app-available-slots', { 'pincode': this.pincode }]);
     }
     else {
-      console.log('Pincode is not specified');
+      this.pincodeError = true;
+      this.utilService.highlightInput(0);
     }
+  }
+
+  clearAll() {
+    this.pincode = null;
+    this.pincodeError = null;
+    this.utilService.resetInput(0);
   }
 }

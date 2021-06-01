@@ -25,3 +25,10 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+Notes by Kajal Kukreja -
+
+Changes in environment.ts files for dev and prod -
+
+Create your own captcha and replace the value of reCaptchaSiteKey with your own site key
+Replace the value of backendApiEndpoint with your domain name

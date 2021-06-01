@@ -1,11 +1,11 @@
 <div class="slot-container">
 	<div class="menu">
-		<p-tabView>
+		<p-tabView (onChange)="clear($event)">
 			<p-tabPanel header="Search By Pincode">
-				<app-search-by-pincode></app-search-by-pincode>
+				<app-search-by-pincode #pincode></app-search-by-pincode>
 			</p-tabPanel>
 			<p-tabPanel header="Search By District">
-				<app-search-by-district></app-search-by-district>
+				<app-search-by-district #district></app-search-by-district>
 			</p-tabPanel>
 		</p-tabView>
 		<app-slot-notification></app-slot-notification>

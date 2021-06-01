@@ -1,5 +1,34 @@
 @import "../../../../../styles.css";
 
 :host ::ng-deep .p-inputnumber {
-    width: 19rem;
+    width: 17rem;
+}
+
+:host ::ng-deep .p-inputnumber-input {
+    font-size: smaller;
+}
+
+:host ::ng-deep .p-button.p-button-sm {
+    font-size: smaller;
+    padding: 0.4375rem;
+}
+
+.error {
+    margin: 0;
+    color: red;
+    font-size: x-small;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    :host ::ng-deep .p-inputnumber {
+        width: 90%;
+    }
+
+    :host ::ng-deep .p-inputnumber-input {
+        font-size: medium;
+    }
+    
+	.input_pincode {
+		text-align: center;
+	}
 }

@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -15,7 +15,7 @@ export class MemberService {
     params = params.set('pincode', pincode != null ? pincode.toString() : '');
     params = params.set('district_id', districtId != null ? districtId.toString() : '');
 
-    return this.http.post(environment.restApiEndpoint, '', { params: params });
+    return this.http.post(environment.backendApiEndpoint + '?member', '', { params: params });
   }
 
 }

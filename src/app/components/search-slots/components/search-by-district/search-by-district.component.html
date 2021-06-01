@@ -13,12 +13,13 @@
 			</div>
 		</ng-template>
 	</p-dropdown>
+	<p *ngIf="stateError" class="error">* State is required</p>
 </div>
 
 <div style="margin-top: 10px;" *ngIf="selectedState" class="input_district">
 	<p-dropdown #dd2 [options]="districts" [(ngModel)]="selectedDistrict" optionLabel="name" [filter]="true"
-		filterBy="name" [showClear]="true" required="true" resetFilterOnHide="true" placeholder="Select District"
-		[style]="{'text-align': 'left'}">
+		filterBy="name" [showClear]="true" required="true" resetFilterOnHide="true" 
+		placeholder="Select District" [style]="{'text-align': 'left'}">
 		<ng-template pTemplate="selectedItem">
 			<div class="district-item district-item-value" *ngIf="selectedState && selectedDistrict">
 				<div>{{selectedDistrict.name}}</div>
@@ -30,8 +31,9 @@
 			</div>
 		</ng-template>
 	</p-dropdown>
+	<p *ngIf="districtError" class="error">* District is required</p>
 </div>
 
 <div style="text-align: center; margin-top: 10px;">
-	<button pButton type="button" label="Search" icon="pi pi-search" class="p-button-sm" (click)="search()"></button>
+	<button pButton type="button" label="Search" class="p-button-sm" (click)="search()"></button>
 </div>
