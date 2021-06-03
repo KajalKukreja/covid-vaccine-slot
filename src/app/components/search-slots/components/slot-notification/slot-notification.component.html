@@ -1,7 +1,10 @@
 <div class="slot-notification">
 	<h4>Slot unavailable?</h4>
+	<h5>Get notified directly on your <a (click)="showEmailDialog()">Email</a> when slot is available !</h5>
+	<!--
 	<h5>Get notified directly on your <a (click)="showEmailDialog()">Email</a> or <a (click)="showWhatsAppDialog()">WhatsApp</a> when slot is available !</h5>
 	<h5>Notification feature coming soon...</h5>
+	-->
 	<h6>Note : Slots are provided by the state govt and private hospitals. Slot availability data is cached and may be upto 30 minutes old.</h6>
 	
 	<p-dialog [(visible)]="displayEmail" [breakpoints]="{'960px': '80vw', '640px': '100vw'}"
