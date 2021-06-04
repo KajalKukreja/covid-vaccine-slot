@@ -4,6 +4,25 @@
 	</p-inputNumber>
 	<p *ngIf="pincodeError" class="error">* Valid pincode is required</p>
 </div>
+
+<div class="filters">
+	<div class="col1">
+		<p-radioButton name="age" value="45" label="45+" [(ngModel)]="age"></p-radioButton>
+		<span style="margin-bottom: 15px;"></span>
+		<p-radioButton name="dose" value="dose1" label="Dose 1" [(ngModel)]="dose"></p-radioButton>
+	</div>
+	<div class="col2">
+		<p-radioButton name="age" value="18" label="18+" [(ngModel)]="age"></p-radioButton>
+		<span style="margin-bottom: 15px;"></span>
+		<p-radioButton name="dose" value="dose2" label="Dose 2" [(ngModel)]="dose"></p-radioButton>
+	</div>
+	<div class="col3">
+		<p-radioButton name="age" label="Any" [(ngModel)]="age"></p-radioButton>
+		<span style="margin-bottom: 15px;"></span>
+		<p-radioButton name="dose" label="Any" [(ngModel)]="dose"></p-radioButton>
+	</div>
+</div>
+
 <div style="text-align: center; margin-top: 10px;">
 	<button pButton type="button" label="Search" class="p-button-sm" (click)="search()"></button>
 </div>

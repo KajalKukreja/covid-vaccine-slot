@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule, Renderer2 } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,6 +15,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { PanelModule } from 'primeng/panel';
+import { RadioButtonModule } from 'primeng/radiobutton';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { TableModule } from 'primeng/table';
 import { TabViewModule } from 'primeng/tabview';
@@ -32,7 +33,6 @@ import { ReCaptchaService } from './services/recaptcha.service';
 import { StatesService } from './services/states.service';
 import { UtilService } from './services/util.service';
 import { VaccineSlotsService } from './services/vaccine-slots.service';
-
 
 const appRoutes: Routes = [
   {
@@ -75,6 +75,7 @@ const appRoutes: Routes = [
     TableModule,
     TabViewModule,
     PanelModule,
+    RadioButtonModule,
     RecaptchaModule,
     RecaptchaFormsModule,
     ScrollTopModule

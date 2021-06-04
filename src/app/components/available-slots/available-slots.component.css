@@ -74,7 +74,7 @@ p-table td {
 }
 
 .nocapacity {
-    background-color: #ff00009e;
+    background-color: red;
 }
 
 .age {
@@ -105,6 +105,7 @@ p-table td {
 	font-size: 10px;
 	margin-left: 10px;
 	padding: 5px;
+    float: right;
 }
 .vaccine-details a {
 	text-decoration: none;
@@ -116,32 +117,37 @@ p-table td {
     border-left: 2px solid green;
 }
 
+.doses span:first-child {
+    margin-right: 10px;
+}
+
+.break {
+    display: none;
+    margin: 5px;
+}
+
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
     .available-slots {
         height: fit-content;
+        padding: 20px;
     }
 
     .vaccine-details {
         text-align: center;
     }
     
-    .age::after {
-        content: "\A";
-        white-space: pre;
-    }
-
     .doses {
         border: none;
+        margin: 0;
+        padding: 0;
     }
 
-    .doses::before {
-        content: "\A";
-        white-space: pre;
+    .doses span:first-child {
+        margin-right: 0;
     }
-
-    .vaccine-details a::before {
-        content: "\A";
-        white-space: pre;
+    
+    .break {
+        display: block;
     }
 
     .vaccine-details a {

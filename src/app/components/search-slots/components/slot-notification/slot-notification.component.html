@@ -8,7 +8,7 @@
 	<h6>Note : Slots are provided by the state govt and private hospitals. Slot availability data is cached and may be upto 30 minutes old.</h6>
 	
 	<p-dialog [(visible)]="displayEmail" [breakpoints]="{'960px': '80vw', '640px': '100vw'}"
-		[style]="{'text-align': 'center', 'height': '80vh'}" [modal]="true" [dismissableMask]="true"
+		[style]="{'text-align': 'center', 'height': '90vh'}" [modal]="true" [dismissableMask]="true"
 		(onShow)="resetAllInputStyles()">
 		<div *ngIf="emailAdded != 'true'">
 			
@@ -62,6 +62,24 @@
 				</p-dropdown>
 			</div>
 
+			<div class="filters">
+				<div class="col1">
+					<p-radioButton name="age" value="45" label="45+" [(ngModel)]="age"></p-radioButton>
+					<span style="margin-bottom: 15px;"></span>
+					<p-radioButton name="dose" value="dose1" label="Dose 1" [(ngModel)]="dose"></p-radioButton>
+				</div>
+				<div class="col2">
+					<p-radioButton name="age" value="18" label="18+" [(ngModel)]="age"></p-radioButton>
+					<span style="margin-bottom: 15px;"></span>
+					<p-radioButton name="dose" value="dose2" label="Dose 2" [(ngModel)]="dose"></p-radioButton>
+				</div>
+				<div class="col3">
+					<p-radioButton name="age" label="Any" [(ngModel)]="age"></p-radioButton>
+					<span style="margin-bottom: 15px;"></span>
+					<p-radioButton name="dose" label="Any" [(ngModel)]="dose"></p-radioButton>
+				</div>
+			</div>
+
 			<input type="text" pInputText [(ngModel)]="email" placeholder="Enter your email address" 
 			id="email" (ngModelChange)="validateEmail()" style="margin-top: 10px;" />
 
@@ -76,7 +94,7 @@
 	</p-dialog>
 
 	<p-dialog [(visible)]="displayWhatsApp" [breakpoints]="{'960px': '80vw', '640px': '100vw'}"
-		[style]="{'text-align': 'center', 'height': '80vh'}" [modal]="true" [dismissableMask]="true"
+		[style]="{'text-align': 'center', 'height': '90vh'}" [modal]="true" [dismissableMask]="true"
 		(onShow)="resetAllInputStyles()">
 		<div *ngIf="mobileNoAdded != 'true'">
 
@@ -128,6 +146,24 @@
 						</div>
 					</ng-template>
 				</p-dropdown>
+			</div>
+
+			<div class="filters">
+				<div class="col1">
+					<p-radioButton name="age" value="45" label="45+" [(ngModel)]="age"></p-radioButton>
+					<span style="margin-bottom: 15px;"></span>
+					<p-radioButton name="dose" value="dose1" label="Dose 1" [(ngModel)]="dose"></p-radioButton>
+				</div>
+				<div class="col2">
+					<p-radioButton name="age" value="18" label="18+" [(ngModel)]="age"></p-radioButton>
+					<span style="margin-bottom: 15px;"></span>
+					<p-radioButton name="dose" value="dose2" label="Dose 2" [(ngModel)]="dose"></p-radioButton>
+				</div>
+				<div class="col3">
+					<p-radioButton name="age" label="Any" [(ngModel)]="age"></p-radioButton>
+					<span style="margin-bottom: 15px;"></span>
+					<p-radioButton name="dose" label="Any" [(ngModel)]="dose"></p-radioButton>
+				</div>
 			</div>
 
 			<div class="input_mobile_no" style="margin-top: 10px;">

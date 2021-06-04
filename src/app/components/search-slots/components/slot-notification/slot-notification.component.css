@@ -3,10 +3,12 @@
 :host ::ng-deep .p-dialog .p-dialog-header {
     padding-bottom: 0;
 	justify-content: flex-end;
+	padding: 10px;
 }
 
 :host ::ng-deep .p-dialog .p-dialog-content {
     height: inherit;
+	padding: 15px;
 }
 
 :host ::ng-deep .p-inputnumber,
@@ -21,6 +23,7 @@ input {
 :host ::ng-deep .p-dropdown.p-dropdown-clearable .p-dropdown-label,
 :host ::ng-deep .p-dropdown-panel .p-dropdown-header .p-dropdown-filter,
 :host ::ng-deep .p-dropdown-panel .p-dropdown-items .p-dropdown-empty-message,
+:host ::ng-deep .p-radiobutton-label,
 :host ::ng-deep .p-button.p-button-sm,
 input {
     font-size: smaller;
@@ -36,6 +39,10 @@ input {
 
 h4, h5 {
 	color: #43a743e6;
+}
+
+h5 {
+	margin-top: 0;
 }
 
 h6 {
@@ -56,6 +63,20 @@ button {
 re-captcha {
 	margin: 0 auto;
 	display: table
+}
+
+.filters {
+    display: flex;
+}
+
+.col1, .col2, .col3 {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.col1, .col2 {
+    margin-right: 25px;
 }
 
 .error {
@@ -84,4 +105,8 @@ re-captcha {
 	h4 {
 		margin: 10px 0 25px 0;
 	}
+	
+    .filters {
+        justify-content: center;
+    }
 }

@@ -16,7 +16,7 @@
 		</ng-template>
 		<ng-template pTemplate="body" let-slot>
 			<tr>
-				<td style="width: 20%; padding: 10px;">
+				<td style="width: 40%; padding: 10px;">
 					<p class="name">{{slot.name}}
 						<span *ngIf="slot.fee_type == 'Paid'"><span
 								[ngClass]="slot.fee_type">{{slot.fee_type}}</span></span>
@@ -30,20 +30,27 @@
 						<p-message severity="info" text="{{v.vaccine}} : Rs. {{v.fee}}" styleClass="p-mr-2"></p-message>
 					</div>
 				</td>
-				<td>
+				<td style="width: 60%">
 					<div *ngFor="let v of slot.vaccines">
 						<p class="date">{{v.date}}</p>
 						<div class="vaccine-details">
-							<span>{{v.vaccine}}<span class="capacity">{{v.available_capacity}}</span><span
-									class="age">Age {{v.min_age_limit}}+</span></span>
-							<span class="doses">
-								Dose 1 : <span [ngClass]="v.available_capacity_dose1 != 0 ? 'capacity' : 'nocapacity'"
-									style="margin-right: 15px;">{{v.available_capacity_dose1}}</span>
-								Dose 2 : <span
-									[ngClass]="v.available_capacity_dose2 != 0 ? 'capacity' : 'nocapacity'">{{v.available_capacity_dose2}}</span>
+							<span>{{v.vaccine}}<span class="capacity">{{v.available_capacity}}</span>
+								<p class="break"></p>
+								<span class="age">Age {{v.min_age_limit}}+</span>
 							</span>
-							<a href="https://selfregistration.cowin.gov.in/" target="_blank"><button pButton
-									type="button" label="Book Slot"
+							<p class="break"></p>
+							<span class="doses">
+								<span>Dose 1 : <span
+										[ngClass]="v.available_capacity_dose1 != 0 ? 'capacity' : 'nocapacity'">{{v.available_capacity_dose1}}</span>
+								</span>
+								<p class="break"></p>
+								<span>Dose 2 : <span
+										[ngClass]="v.available_capacity_dose2 != 0 ? 'capacity' : 'nocapacity'">{{v.available_capacity_dose2}}</span>
+								</span>
+							</span>
+							<p class="break"></p>
+							<a href="https://selfregistration.cowin.gov.in/" target="_blank">
+								<button pButton type="button" label="Book Slot"
 									class="p-button-help p-button-raised p-button-rounded"></button>
 							</a>
 							<p>{{v.slots}}</p>

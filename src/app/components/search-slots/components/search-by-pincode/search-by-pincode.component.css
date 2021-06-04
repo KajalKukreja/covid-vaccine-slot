@@ -4,13 +4,28 @@
     width: 17rem;
 }
 
-:host ::ng-deep .p-inputnumber-input {
+:host ::ng-deep .p-inputnumber-input,
+:host ::ng-deep .p-radiobutton-label {
     font-size: smaller;
 }
 
 :host ::ng-deep .p-button.p-button-sm {
     font-size: smaller;
     padding: 0.4375rem;
+}
+
+.filters {
+    display: flex;
+}
+
+.col1, .col2, .col3 {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+}
+
+.col1, .col2 {
+    margin-right: 25px;
 }
 
 .error {
@@ -31,4 +46,12 @@
 	.input_pincode {
 		text-align: center;
 	}
+    
+    .filters {
+        justify-content: center;
+    }
+    
+    .col1, .col2, .col3 {
+        padding: 15px;
+    }
 }

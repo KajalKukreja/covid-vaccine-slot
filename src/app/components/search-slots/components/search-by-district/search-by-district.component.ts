@@ -22,8 +22,11 @@ export class SearchByDistrict implements OnInit {
 
 	districtError: boolean;
 
-	constructor(private router: Router, private renderer: Renderer2, 
-		private utilService: UtilService) {
+	age: number;
+
+	dose: string;
+
+	constructor(private router: Router, private utilService: UtilService) {
 		this.states = [];
 		this.districts = [];
 	}
@@ -46,7 +49,7 @@ export class SearchByDistrict implements OnInit {
 	search() {
 		if (!this.utilService.validState(this.selectedState)) {
 			this.stateError = true;
-      		this.utilService.highlightDropdown(0);
+			this.utilService.highlightDropdown(0);
 		}
 		else if (!this.utilService.validDistrict(this.selectedDistrict)) {
 			this.districtError = true;
@@ -58,7 +61,16 @@ export class SearchByDistrict implements OnInit {
 				this.districtError = false;
 				this.utilService.resetDropdown(0);
 				this.utilService.resetDropdown(1);
-				this.router.navigate(['app-available-slots', { 'district_id': this.selectedDistrict.id }]);
+				let availableSlotsRoute = 'app-available-slots;district_id=' + this.selectedDistrict.id;
+
+				if (this.age != null && this.age != undefined) {
+					availableSlotsRoute += ';age=' + this.age;
+				}
+				if (this.dose != null && this.dose != undefined) {
+					availableSlotsRoute += ';dose=' + this.dose;
+				}
+
+				this.router.navigateByUrl(availableSlotsRoute);
 			}
 			else {
 				console.log('District is not specified');
@@ -70,10 +82,10 @@ export class SearchByDistrict implements OnInit {
 
 	clearAll() {
 		this.districts = null;
-    	this.selectedState = null;
-    	this.selectedDistrict = null;
-    	this.stateError = null;
-    	this.districtError = null;
+		this.selectedState = null;
+		this.selectedDistrict = null;
+		this.stateError = null;
+		this.districtError = null;
 		this.utilService.resetDropdown(0);
 		this.utilService.resetDropdown(1);
 	}

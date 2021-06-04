@@ -30,6 +30,10 @@ export class SlotNotification implements OnInit {
 
 	selectedDistrict: District;
 
+	age: number;
+
+	dose: string;
+
 	displayEmail: boolean;
 
 	displayWhatsApp: boolean;
@@ -129,11 +133,13 @@ export class SlotNotification implements OnInit {
 			item != 'ReCaptcha verification failed. Please try again.');
 	}
 
-	errored(event: any) {
-		console.log(event);
+	errored(errorDetails: any) {
+		console.log(errorDetails);
 		const captchaError = 'Could not load reCaptcha. Please refresh the page.';
 		console.log(captchaError);
 		this.commonErrors.push(captchaError);
+		this.reCaptchaEmail.reset();
+		this.reCaptchaMobile.reset();
 	}
 
 	notifyMe() {
@@ -181,13 +187,15 @@ export class SlotNotification implements OnInit {
 					if (data.success) {
 						if (this.displayEmail) {
 							this.memberService.addMember(this.email, null, this.pincode,
-								this.selectedDistrict != null ? this.selectedDistrict.id : null).subscribe((result: any) => {
+								this.selectedDistrict != null ? this.selectedDistrict.id : null,
+								this.age, this.dose).subscribe((result: any) => {
 									result ? this.emailAdded = 'true' : this.emailAdded = failureMessage;
 								});
 						}
 						else if (this.displayWhatsApp) {
 							this.memberService.addMember(null, this.mobileNo, this.pincode,
-								this.selectedDistrict != null ? this.selectedDistrict.id : null).subscribe((result: any) => {
+								this.selectedDistrict != null ? this.selectedDistrict.id : null,
+								this.age, this.dose).subscribe((result: any) => {
 									result ? this.mobileNoAdded = 'true' : this.mobileNoAdded = failureMessage;
 								});
 						}

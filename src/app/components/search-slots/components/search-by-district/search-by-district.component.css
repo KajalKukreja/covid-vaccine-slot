@@ -8,13 +8,28 @@
 :host ::ng-deep .p-dropdown .p-dropdown-label.p-placeholder,
 :host ::ng-deep .p-dropdown.p-dropdown-clearable .p-dropdown-label,
 :host ::ng-deep .p-dropdown-panel .p-dropdown-header .p-dropdown-filter,
-:host ::ng-deep .p-dropdown-panel .p-dropdown-items .p-dropdown-empty-message {
+:host ::ng-deep .p-dropdown-panel .p-dropdown-items .p-dropdown-empty-message.error,
+:host ::ng-deep .p-radiobutton-label {
     font-size: smaller;
 }
 
 :host ::ng-deep .p-button.p-button-sm {
     font-size: smaller;
     padding: 0.4375rem;
+}
+
+.filters {
+    display: flex;
+}
+
+.col1, .col2, .col3 {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+}
+
+.col1, .col2 {
+    margin-right: 25px;
 }
 
 .error {
@@ -39,4 +54,12 @@
 	.input_state, .input_district {
 		text-align: center;
 	}
+    
+    .filters {
+        justify-content: center;
+    }
+
+    .col1, .col2, .col3 {
+        padding: 15px;
+    }
 }

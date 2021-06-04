@@ -2,19 +2,20 @@
 
 .footer {
 	width: 100%;
-    bottom: 0;
-    position: fixed;
-    display: flex;
-    padding: 5px;
     height: 6%;
+    position: fixed;
+    bottom: 0;
+    display: flex;
     justify-content: center;
     align-items: center;
 	text-align: center;
+    background: #FFF;
     border-top: 2px double #43a743e6;
 }
 
 h5 {
 	font-size: smaller;
+    font-weight: 500;
 	color: #43a743e6;
 	margin: 5px;
 }
