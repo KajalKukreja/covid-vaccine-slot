@@ -5,12 +5,12 @@
 }
 
 :host ::ng-deep .p-inputnumber-input,
-:host ::ng-deep .p-radiobutton-label {
+:host ::ng-deep .p-radiobutton-label,
+:host ::ng-deep .p-button.p-button-sm {
     font-size: smaller;
 }
 
 :host ::ng-deep .p-button.p-button-sm {
-    font-size: smaller;
     padding: 0.4375rem;
 }
 
@@ -39,7 +39,8 @@
         width: 90%;
     }
 
-    :host ::ng-deep .p-inputnumber-input {
+    :host ::ng-deep .p-inputnumber-input,
+	:host ::ng-deep .p-button.p-button-sm {
         font-size: medium;
     }
     

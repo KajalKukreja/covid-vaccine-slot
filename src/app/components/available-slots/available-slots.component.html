@@ -34,8 +34,9 @@
 					<div *ngFor="let v of slot.vaccines">
 						<p class="date">{{v.date}}</p>
 						<div class="vaccine-details">
-							<span>{{v.vaccine}}<span class="capacity">{{v.available_capacity}}</span>
-								<p class="break"></p>
+							<span>
+								<span class="name">{{v.vaccine}}</span>
+								<span class="capacity" id="capacity">{{v.available_capacity}}</span>
 								<span class="age">Age {{v.min_age_limit}}+</span>
 							</span>
 							<p class="break"></p>

@@ -132,6 +132,10 @@ p-table td {
         padding: 20px;
     }
 
+    .age {
+        margin-left: 15px;
+    }
+
     .vaccine-details {
         text-align: center;
     }
@@ -148,6 +152,10 @@ p-table td {
     
     .break {
         display: block;
+    }
+
+    #capacity {
+        display: none;
     }
 
     .vaccine-details a {

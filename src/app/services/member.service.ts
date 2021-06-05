@@ -10,13 +10,13 @@ export class MemberService {
 
   addMember(email: string, mobileNo: number, pincode: number, districtId: number, age: number, dose: string): Observable<any> {
     let params = new HttpParams();
-    params = params.set('email', email);
-    params = params.set('mobile_no', mobileNo != null ? mobileNo.toString() : '');
-    params = params.set('pincode', pincode != null ? pincode.toString() : '');
-    params = params.set('district_id', districtId != null ? districtId.toString() : '');
-    params = params.set('age', age != null ? age.toString() : '');
-    params = params.set('dose', dose);
-    
+    params = params.set('email', (email != null && email != undefined) ? email : 'NULL');
+    params = params.set('mobile_no', (mobileNo != null && mobileNo != undefined) ? mobileNo.toString() : 'NULL');
+    params = params.set('pincode', (pincode != null && pincode != undefined) ? pincode.toString() : 'NULL');
+    params = params.set('district_id', (districtId != null && districtId != undefined) ? districtId.toString() : 'NULL');
+    params = params.set('age', (age != null && age != undefined) ? age.toString() : 'NULL');
+    params = params.set('dose', (dose != null && dose != undefined) ? dose : 'NULL');
+
     return this.http.post(environment.backendApiEndpoint + '?member', '', { params: params });
   }
 
