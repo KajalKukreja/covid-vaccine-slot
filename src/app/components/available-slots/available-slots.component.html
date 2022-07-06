@@ -37,7 +37,10 @@
 							<span>
 								<span class="name">{{v.vaccine}}</span>
 								<span class="capacity" id="capacity">{{v.available_capacity}}</span>
-								<span class="age">Age {{v.min_age_limit}}+</span>
+								<span class="age">Age 
+									<span *ngIf="!v.allow_all_age">{{v.min_age_limit}} - {{v.max_age_limit}}</span>	
+									<span *ngIf="v.allow_all_age">{{v.min_age_limit}}+</span>
+								</span>
 							</span>
 							<p class="break"></p>
 							<span class="doses">
@@ -54,6 +57,9 @@
 								<button pButton type="button" label="Book Slot"
 									class="p-button-help p-button-raised p-button-rounded"></button>
 							</a>
+							<p *ngIf="v.available_capacity > (v.available_capacity_dose1 + v.available_capacity_dose2)">
+								Precautionary Dose : <span class="capacity">{{v.available_capacity - v.available_capacity_dose1 - v.available_capacity_dose2}}</span>
+							</p>
 							<p>{{v.slots}}</p>
 						</div>
 					</div>

@@ -63,50 +63,45 @@ export class AvailableSlotsComponent implements OnInit {
 							', ' + row.pincode;
 
 						let vaccines: VaccineDetails[] = [];
+						//let no_of_seats = 0;		
 						for (let session of row.sessions) {
 							if (session.available_capacity > 0) {
-								const slots = session.slots != null ? session.slots.toString().replaceAll(',', ', ') : '';
-								let doseAvailable = 
-								(this.dose == 'dose1' && session.available_capacity_dose1 > 0) || 
-								(this.dose == 'dose2' && session.available_capacity_dose2 > 0);
-									
-								if (this.age != null && this.dose != null) {
-									if (this.age == session.min_age_limit && doseAvailable) {
-										vaccines.push(new VaccineDetails(session.vaccine, session.date, 
-											session.available_capacity, session.available_capacity_dose1, 
-											session.available_capacity_dose2, session.min_age_limit, slots)
-										);
+								let slots = '';
+								if (session.slots.length > 0) {
+									for (let slot of session.slots) {
+										//slots += slot.time + ' (' + slot.seats + ' seats), ';
+										//no_of_seats += slot.seats;
+										slots += slot.time + ', ';
 									}
 								}
-								else if (this.age != null) {
-									if (this.age == session.min_age_limit) {
+								
+								let doseAvailable = false;
+								if (this.dose == null) {
+									doseAvailable = session.available_capacity > 0;
+								} else if (this.dose == 'dose1') {
+									doseAvailable = session.available_capacity_dose1 > 0;
+								} else if (this.dose == 'dose2') {
+									doseAvailable = session.available_capacity_dose2 > 0;
+								}
+
+								if (doseAvailable) {
+									if (this.age == null || (this.age != null && this.age == session.min_age_limit)) {
 										vaccines.push(new VaccineDetails(session.vaccine, session.date, 
 											session.available_capacity, session.available_capacity_dose1, 
-											session.available_capacity_dose2, session.min_age_limit, slots)
+											session.available_capacity_dose2, session.allow_all_age, 
+											session.min_age_limit, session.max_age_limit, slots)
 										);
 									}
-								}
-								else if (this.dose != null) {
-									if (doseAvailable) {
-										vaccines.push(new VaccineDetails(session.vaccine, session.date, 
-											session.available_capacity, session.available_capacity_dose1, 
-											session.available_capacity_dose2, session.min_age_limit, slots)
-										);
-									}
-								}
-								else {
-									vaccines.push(new VaccineDetails(session.vaccine, session.date, 
-										session.available_capacity, session.available_capacity_dose1, 
-										session.available_capacity_dose2, session.min_age_limit, slots)
-									);
 								}
 							}
 						}
-						const vaccineSlot = new VaccineSlot(row.name, address,
-							row.fee_type, row.vaccine_fees, vaccines);
-
-						if (vaccineSlot.vaccines.length > 0) {
-							this.slots.push(vaccineSlot);
+						//if (vaccines.length > 0 && no_of_seats > 0) {
+						if (vaccines.length > 0) {
+							this.slots.push(new VaccineSlot(row.name, address,
+								row.fee_type, row.vaccine_fees, vaccines));
+						} else {
+							console.log('No results');
+							this.noResults = true;
 						}
 					}
 					if (this.slots.length == 0) {
